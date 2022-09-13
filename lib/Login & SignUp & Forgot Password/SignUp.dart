@@ -18,7 +18,7 @@ class _SignUpscreenState extends State<SignUpscreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-            child: SizedBox(
+            child: Container(
               width: double.infinity,
               height: double.infinity,
               child: ListView(

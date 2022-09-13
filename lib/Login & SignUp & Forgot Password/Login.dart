@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'ForgotPassword.dart';
 import 'SignUp.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _LoginscreenState extends State<Loginscreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-            child: SizedBox(
+            child: Container(
           width: double.infinity,
           height: double.infinity,
           child: ListView(
@@ -185,12 +186,12 @@ class _LoginscreenState extends State<Loginscreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => Forgot(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Forgot(),
+                          ),
+                        );
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(right: 18.0),
@@ -228,7 +229,7 @@ class _LoginscreenState extends State<Loginscreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignUpscreen()));
+                                      builder: (context) => const SignUpscreen()));
                             },
                             child: const Text(
                               "SignUp",
