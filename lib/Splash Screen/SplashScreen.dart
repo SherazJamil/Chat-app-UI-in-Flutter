@@ -1,6 +1,6 @@
+import 'package:chatui_app/Login%20&%20SignUp%20&%20Forgot%20Password/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
-import 'HomePage.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
     return SplashScreenView(
-      navigateRoute: const Home(),
+      navigateRoute: const Loginscreen(),
       duration: 5000,
       imageSize: 150,
       imageSrc: "assets/Chat.png",
