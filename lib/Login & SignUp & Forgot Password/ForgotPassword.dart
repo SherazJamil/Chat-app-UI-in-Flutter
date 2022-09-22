@@ -1,5 +1,6 @@
 import 'package:chatui_app/Login%20&%20SignUp%20&%20Forgot%20Password/Login.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Forgot extends StatefulWidget {
   const Forgot({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _ForgotState extends State<Forgot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -184,7 +185,7 @@ class _ForgotState extends State<Forgot> {
                             fillColor: Colors.grey.shade300,
                             filled: true,
                             prefixIcon: const Icon(
-                              Icons.email,
+                              FontAwesomeIcons.solidEnvelope,
                               color: Colors.black,
                               size: 20,
                             ),
@@ -209,7 +210,7 @@ class _ForgotState extends State<Forgot> {
                             fillColor: Colors.grey.shade300,
                             filled: true,
                             prefixIcon: const Icon(
-                              Icons.code,
+                              FontAwesomeIcons.lock,
                               color: Colors.black,
                               size: 20,
                             ),
@@ -234,7 +235,7 @@ class _ForgotState extends State<Forgot> {
                             fillColor: Colors.grey.shade300,
                             filled: true,
                             prefixIcon: const Icon(
-                              Icons.lock,
+                              FontAwesomeIcons.lock,
                               color: Colors.black,
                               size: 20,
                             ),
@@ -245,7 +246,32 @@ class _ForgotState extends State<Forgot> {
                       ),
                     ),
                     const SizedBox(
-                      height: 25,
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: TextFormField(
+                        controller: pswEditingController,
+                        decoration: InputDecoration(
+                            hintText: "Confirm Password",
+                            hintStyle: const TextStyle(
+                              color: Colors.black54,
+                            ),
+                            fillColor: Colors.grey.shade300,
+                            filled: true,
+                            prefixIcon: const Icon(
+                              FontAwesomeIcons.lock,
+                              color: Colors.black,
+                              size: 20,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide.none,
+                            )),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 25.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -258,12 +284,12 @@ class _ForgotState extends State<Forgot> {
                             builder: (BuildContext dialogContext) {
                               return AlertDialog(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)
+                                    borderRadius: BorderRadius.circular(10)
                                 ),
                                 title: const Text(
-                                    'Password Changed',
+                                  'Password Changed',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.deepOrange,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
                                   ),
@@ -271,13 +297,19 @@ class _ForgotState extends State<Forgot> {
                                 content: const Text(
                                   'Your password has been changed',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.black45
+                                      fontWeight: FontWeight.w300,
+                                      color: Colors.black45
                                   ),
                                 ),
                                 actions: <Widget>[
                                   TextButton(
-                                    child: const Text('Ok'),
+                                    child: const Text(
+                                        'Ok',
+                                      style: TextStyle(
+                                        color: Colors.deepOrange,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    ),
                                     onPressed: () {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => const Loginscreen())); // Dismiss alert dialog
                                     },
@@ -312,31 +344,6 @@ class _ForgotState extends State<Forgot> {
                     ),
                     const SizedBox(
                       height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: TextFormField(
-                        controller: pswEditingController,
-                        decoration: InputDecoration(
-                            hintText: "Confirm Password",
-                            hintStyle: const TextStyle(
-                              color: Colors.black54,
-                            ),
-                            fillColor: Colors.grey.shade300,
-                            filled: true,
-                            prefixIcon: const Icon(
-                              Icons.lock,
-                              color: Colors.black,
-                              size: 20,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide.none,
-                            )),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),

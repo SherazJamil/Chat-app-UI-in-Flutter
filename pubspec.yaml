@@ -37,6 +37,8 @@ dependencies:
   splash_screen_view: ^3.0.0
   grouped_list: ^5.1.2
   intl: ^0.17.0
+  font_awesome_flutter: ^10.2.1
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:

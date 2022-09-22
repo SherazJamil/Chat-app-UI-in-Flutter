@@ -1,4 +1,6 @@
+import 'package:chatui_app/Chat/Conversation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Chathome extends StatefulWidget {
   const Chathome({Key? key}) : super(key: key);
@@ -14,8 +16,9 @@ class _ChathomeState extends State<Chathome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.deepOrange,
-        elevation: 30,
+        elevation: 20,
         title: const Text(
           'Mi Chat',
           style: TextStyle(
@@ -41,549 +44,296 @@ class _ChathomeState extends State<Chathome> {
           ])
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: TextField(
-                    controller: searchEditingController,
-                    decoration: InputDecoration(
-                        hintText: "Search here...",
-                        hintStyle: const TextStyle(
-                          color: Colors.black54,
-                        ),
-                        fillColor: Colors.grey.shade300,
-                        filled: true,
-                        prefixIcon: const Icon(
-                          Icons.search,
+      body: ListView(
+        children: [
+          Column(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: TextField(
+                  controller: searchEditingController,
+                  decoration: InputDecoration(
+                      hintText: "Search here...",
+                      hintStyle: const TextStyle(
+                        color: Colors.black54,
+                      ),
+                      fillColor: Colors.grey.shade300,
+                      filled: true,
+                      prefixIcon: const Icon(
+                        FontAwesomeIcons.magnifyingGlass,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                      suffixIcon:  IconButton(
+                        color: Colors.white38,
+                        onPressed: () {},
+                        icon: const Icon(
+                          FontAwesomeIcons.magnifyingGlass,
                           color: Colors.black,
                           size: 20,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide.none,
-                        )),
-                  ),
+                        ),),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide.none,
+                      )),
                 ),
-                const SizedBox(
-                  width: 5,
-                ),
-                IconButton(onPressed: () {},
-                  icon: const Icon(Icons.search),)
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-             ListTile(
-               tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                    )
-                  ]
-                ),
-                  child:  const CircleAvatar(
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                 leading: const CircleAvatar(
+                   radius: 35,
+                   backgroundImage: AssetImage('assets/Thor.png'),
+                 ),
+                 title: const Text(
+                     'abc@gmail.com',
+                   style: TextStyle(
+                     color: Colors.white,
+                     fontWeight: FontWeight.bold,
+                     fontSize: 20,
+                   ),
+                 ),
+                 trailing: const Icon(FontAwesomeIcons.solidMessage,
+                 color: Colors.white,),
+                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
+                      ),
+              ),
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                  'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  ),
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-              color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-               onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  ),
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  ),
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  ),
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  ),
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  ),
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
+              const Divider(
+                color: Colors.white,
+                height: 5,
+              ),
+              SizedBox(
+                height: 70,
+                child: ListTile(
+                  minVerticalPadding: 25,
+                  tileColor: Colors.deepOrangeAccent,
+                  leading: const CircleAvatar(
                     radius: 35,
                     backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
                   ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
+                  title: const Text(
+                    'abc@gmail.com',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  trailing: const Icon(FontAwesomeIcons.solidMessage,
+                    color: Colors.white,),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConversationScreen()));              },
                 ),
               ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
+              const SizedBox(
+                height: 20,
               ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-            ListTile(
-              tileColor: Colors.deepOrangeAccent,
-              leading: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                        )
-                      ]
-                  ),
-                  child:  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/Thor.png'),
-                  )
-              ),
-              title: const Text(
-                'abc@gmail.com',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              trailing: const Icon(Icons.message_rounded,
-                color: Colors.white,),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              onTap: () {},
-            ),
-            const Divider(
-              height: 5,
-              color: Colors.grey,
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }

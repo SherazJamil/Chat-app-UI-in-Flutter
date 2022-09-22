@@ -14,7 +14,7 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return SplashScreenView(
       navigateRoute: const Loginscreen(),
-      duration: 5000,
+      duration: 3000,
       imageSize: 150,
       imageSrc: "assets/Chat.png",
       text: "Mi Chat",
